@@ -1,6 +1,6 @@
 
 import { useContext } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 import { AuthContext } from '../AuthProvider/AuthProvider';
 
 const Register = () => {
@@ -10,7 +10,7 @@ const Register = () => {
       e.preventDefault();
       const email = e.target.email.value;
       const password = e.target.password.value;
-      if(password.length < 9){
+      if(password.length < 6){
         alert('please enter 6 ')
       }
       const photoUrl = e.target.photoUrl.value;
@@ -46,7 +46,7 @@ const Register = () => {
               type="url"
               placeholder="Added your Url"
               name="photoUrl"
-              className="input input-bordered capitalize"
+              className="input input-bordered "
               required
             />
           </div>
@@ -75,7 +75,8 @@ const Register = () => {
             />
           </div>
           <div className="form-control mt-6">
-            <button className="btn btn-primary">Register Now</button>
+            
+              <button className="btn btn-primary">Register Now</button>
           </div>
           <p className="capitalize">
             Your are a new user please{" "}
