@@ -7,6 +7,7 @@ import MyAppoinment from "../Page/MyAppoinment";
 import Profile from "../Page/Profile";
 import Login from "../Layout/Login";
 import Register from "../Layout/Register";
+import PrivetsRoutes from "../PriveatRoutes/PrivetsRoutes";
 
 const router = createBrowserRouter([
   {
@@ -33,7 +34,11 @@ const router = createBrowserRouter([
       },
       {
         path: "/about/:id",
-        element: <About></About>,
+        element: (
+          <PrivetsRoutes>
+            <About></About>
+          </PrivetsRoutes>
+        ),
         loader: async ({ params }) => {
           const res = await fetch("/service.json");
           const data = await res.json();
@@ -44,11 +49,19 @@ const router = createBrowserRouter([
       },
       {
         path: "/myappoinment",
-        element: <MyAppoinment></MyAppoinment>,
+        element: (
+          <PrivetsRoutes>
+            <MyAppoinment></MyAppoinment>
+          </PrivetsRoutes>
+        ),
       },
       {
         path: "/profile",
-        element: <Profile></Profile>,
+        element: (
+          <PrivetsRoutes>
+            <Profile></Profile>
+          </PrivetsRoutes>
+        ),
       },
       {
         path: "/login",

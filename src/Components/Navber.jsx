@@ -4,11 +4,16 @@ import { AuthContext } from "../AuthProvider/AuthProvider";
 import './NavberStyle.css'
 
 const Navber = () => {
-  const {user} = useContext(AuthContext);
+  const { user, userSignOut } = useContext(AuthContext);
   console.log(user);
+
+  const heandleLogOut=()=>{
+    userSignOut()
+  }
+  
     return (
       <div className="px-20 py-3 flex justify-between items-center bg-sky-600">
-        <div>{user.name}</div>
+        <div className="text-xl font-semibold text-white">{user?.email}</div>
         <div className="text-xl space-x-4 font-semibold text-white">
           <NavLink to={"/"}>Home</NavLink>
           <NavLink to={"/allTreatments"}>All Treatments</NavLink>
@@ -16,9 +21,18 @@ const Navber = () => {
           <NavLink to={"/profile"}>Profile</NavLink>
         </div>
         <div>
-          <NavLink to={'/login'}>
-            <button className="btn btn-primary rounded-none">Login</button>
-          </NavLink>
+          {user && user ? (
+            <button
+              onClick={heandleLogOut}
+              className="btn btn-primary rounded-none"
+            >
+              LogOut
+            </button>
+          ) : (
+            <NavLink to={"/login"}>
+              <button className="btn btn-primary rounded-none">Login</button>
+            </NavLink>
+          )}
         </div>
       </div>
     );

@@ -10,6 +10,9 @@ const Register = () => {
       e.preventDefault();
       const email = e.target.email.value;
       const password = e.target.password.value;
+      if(password.length < 9){
+        alert('please enter 6 ')
+      }
       const photoUrl = e.target.photoUrl.value;
       const Name = e.target.name.value;
       UserRegister(email, password, photoUrl, Name)
@@ -55,7 +58,7 @@ const Register = () => {
               type="email"
               placeholder="Enter your email"
               name="email"
-              className="input input-bordered capitalize"
+              className="input input-bordered "
               required
             />
           </div>
